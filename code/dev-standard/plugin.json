@@ -1,0 +1,14 @@
+{
+  "name": "dev-standard",
+  "displayName": "Dev Standard & Context Orchestrator",
+  "description": "Orchestrateur universel unifiant la méthodologie ICM et les skills d'ingénierie : routage de contexte strict, gouvernance des fichiers IA, gestion des ADRs et invariants de code TDD.",
+  "version": "1.0.0",
+  "repository": "https://github.com/Nath-Hane/ai_plugins",
+  "repositorySubpath": "code",
+  "suggestedPrompts": [
+    "Initialiser l'arborescence de contexte (.agents, docs/adr, commandes)",
+    "Préparer la fiche de test manuel et le commit après implémentation",
+    "Auditer les décisions dans docs/adr et consigner les apprentissages"
+  ],
+  "disabled": false
+}
