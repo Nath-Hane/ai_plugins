@@ -1,7 +1,7 @@
 ---
 name: update-dev-standard
 description: >-
-  Met à jour le plugin dev-standard de manière déterministe et idempotente depuis le dépôt GitHub centralisé (Nath-Hane/ai_plugins/code) vers le projet local, sans altérer les fichiers de configuration du projet.
+  Met à jour le plugin dev-standard de manière déterministe et idempotente depuis le dépôt GitHub centralisé (Nath-Hane/ai_plugins/code/dev-standard) vers le projet local, sans altérer les fichiers de configuration du projet.
 ---
 
 # Update Dev Standard Protocol
@@ -13,12 +13,12 @@ Ce skill assure la mise à jour déterministe, chirurgicale et idempotente du mo
 ## 1. Paramètres & Source de Vérité
 
 * **Dépôt GitHub :** `https://github.com/Nath-Hane/ai_plugins`
-* **Branche par défaut :** `main`
-* **Sous-dossier du plugin :** `code`
+* **Branche par défaut :** `master`
+* **Sous-dossier du plugin :** `code/dev-standard`
 * **URL du Manifeste distant :**
-  `https://raw.githubusercontent.com/Nath-Hane/ai_plugins/main/code/plugin.json`
+  `https://raw.githubusercontent.com/Nath-Hane/ai_plugins/master/code/dev-standard/plugin.json`
 * **URL de l'Archive GitHub :**
-  `https://github.com/Nath-Hane/ai_plugins/archive/refs/heads/main.zip`
+  `https://github.com/Nath-Hane/ai_plugins/archive/refs/heads/master.zip`
 
 ---
 
@@ -29,8 +29,8 @@ flowchart TD
     Start["Lancement /update-dev-standard"] --> CheckManifest["1. Télécharger le plugin.json distant"]
     CheckManifest --> Compare{"version distante > version locale ?"}
     Compare -- "Non (Versions identiques)" --> StopUpToDate["Arrêt : Déjà à jour (vX.Y.Z)"]
-    Compare -- "Oui (Mise à jour requise)" --> DownloadZip["2. Télécharger archive main.zip dans .agents/tmp/"]
-    DownloadZip --> ExtractSubfolder["3. Extraire ai_plugins-main/code/"]
+    Compare -- "Oui (Mise à jour requise)" --> DownloadZip["2. Télécharger archive master.zip dans .agents/tmp/"]
+    DownloadZip --> ExtractSubfolder["3. Extraire ai_plugins-master/code/dev-standard/"]
     ExtractSubfolder --> SyncEngine["4. Synchroniser chirurgicalement rules/, skills/, plugin.json, README.md"]
     SyncEngine --> ProtectData["Sanctification : COMMANDS, LEARNINGS, docs/adr intacts"]
     ProtectData --> PurgeTmp["5. Supprimer archive et extraction temporaires"]
@@ -45,7 +45,7 @@ flowchart TD
 2. Lire la version locale installée (`local_version`).
 3. Télécharger le `plugin.json` distant via `curl` ou requête HTTP :
    ```bash
-   curl -sS https://raw.githubusercontent.com/Nath-Hane/ai_plugins/main/code/plugin.json -o .agents/tmp/remote-plugin.json
+   curl -sS https://raw.githubusercontent.com/Nath-Hane/ai_plugins/master/code/dev-standard/plugin.json -o .agents/tmp/remote-plugin.json
    ```
 4. Comparer les versions :
    * Si `remote_version == local_version` :
@@ -59,19 +59,19 @@ flowchart TD
 
 1. Si une version plus récente est disponible, télécharger l'archive du dépôt dans `.agents/tmp/` :
    ```bash
-   curl -L -sS https://github.com/Nath-Hane/ai_plugins/archive/refs/heads/main.zip -o .agents/tmp/ai_plugins_update.zip
+   curl -L -sS https://github.com/Nath-Hane/ai_plugins/archive/refs/heads/master.zip -o .agents/tmp/ai_plugins_update.zip
    ```
 2. Décompresser l'archive dans un répertoire temporaire dédié :
    `.agents/tmp/extracted_update/`
 
 ---
 
-### Étape 3 : Extraction Ciblée du Sous-Dossier `code/`
+### Étape 3 : Extraction Ciblée du Sous-Dossier `code/dev-standard/`
 
 Localiser le sous-dossier cible dans l'archive décompressée :
-`ai_plugins-main/code/` (ou `<archive-root>/code/`).
+`ai_plugins-master/code/dev-standard/` (ou `<archive-root>/code/dev-standard/`).
 
-Vérifier la présence impérative de `code/plugin.json` et `code/rules/AGENTS.md` pour garantir l'intégrité du téléchargement.
+Vérifier la présence impérative de `code/dev-standard/plugin.json` et `code/dev-standard/rules/AGENTS.md` pour garantir l'intégrité du téléchargement.
 
 ---
 
@@ -79,10 +79,10 @@ Vérifier la présence impérative de `code/plugin.json` et `code/rules/AGENTS.m
 
 Copier **exclusivement** les composants du moteur vers le dossier d'installation du plugin dans le projet :
 
-1. `code/rules/AGENTS.md` ➜ `<plugin_dir>/rules/AGENTS.md`
-2. `code/skills/**` ➜ `<plugin_dir>/skills/`
-3. `code/plugin.json` ➜ `<plugin_dir>/plugin.json`
-4. `code/README.md` ➜ `<plugin_dir>/README.md`
+1. `code/dev-standard/rules/AGENTS.md` ➜ `<plugin_dir>/rules/AGENTS.md`
+2. `code/dev-standard/skills/**` ➜ `<plugin_dir>/skills/`
+3. `code/dev-standard/plugin.json` ➜ `<plugin_dir>/plugin.json`
+4. `code/dev-standard/README.md` ➜ `<plugin_dir>/README.md`
 
 #### 🛡️ Règle Absolue de Sanctification (Ne JAMAIS Toucher) :
 * `.agents/COMMANDS.md`

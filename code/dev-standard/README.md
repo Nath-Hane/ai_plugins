@@ -15,7 +15,7 @@ Plugin AntiGravity pour l'orchestration disciplinée du développement assisté 
   * `docs/adr/` : Architecture Decision Records alignés sur `/grill-with-docs`.
   * `.agents/COMMANDS.md` & `.agents/LEARNINGS.md` : Vérité terrain des commandes et mémoire des pièges passés.
 * **Porte de Revue Humaine & Commits Atomiques :** Arrêt systématique après chaque implémentation réussie, génération d'une fiche de test manuel pas-à-pas, rédaction d'un message de commit conforme (anglais, mode impératif, test "If applied...", max 50 chars, What & Why) et staging chirurgical post-validation explicite (`human-review-and-commit`).
-* **Mise à Jour Déterministe & Idempotente :** `/update-dev-standard` synchronise chirurgicalement le moteur du plugin depuis le monorepo GitHub central (`Nath-Hane/ai_plugins/code`) sans jamais écraser l'état ou les documents propres au projet.
+* **Mise à Jour Déterministe & Idempotente :** `/update-dev-standard` synchronise chirurgicalement le moteur du plugin depuis le monorepo GitHub central (`Nath-Hane/ai_plugins/code/dev-standard`) sans jamais écraser l'état ou les documents propres au projet.
 * **Skill d'Initialisation Automatisé :** `/setup-project-context` initialise l'arborescence, installe de manière sécurisée les skills de Matt Pocock et configure les templates prêts à l'emploi.
 
 ---
@@ -30,7 +30,7 @@ Dans n'importe quel dépôt, lancez la commande :
 Le skill vérifie votre environnement, crée l'arborescence `.agents/`, met à jour votre `.gitignore`, installe les skills de Matt Pocock dans `.agents/skills/` et déploie les modèles de cadrage.
 
 ### Mettre à Jour le Plugin dans un Projet
-Pour récupérer la dernière version du moteur depuis GitHub (`Nath-Hane/ai_plugins/code`) :
+Pour récupérer la dernière version du moteur depuis GitHub (`Nath-Hane/ai_plugins/code/dev-standard`) :
 ```text
 /update-dev-standard
 ```
