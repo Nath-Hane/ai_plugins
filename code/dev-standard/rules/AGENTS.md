@@ -11,12 +11,14 @@ Pour préserver la fenêtre de contexte et éviter toute régression ou décisio
 1. **Phase de Cadrage, Architecture ou Réfutation :**
    * Consulter l'index des décisions d'architecture : `docs/adr/INDEX.md` (ou lister `docs/adr/`).
    * Si une décision passée concerne le périmètre de la tâche, lire l'ADR correspondant avant de proposer une modification structurelle.
+   * Consulter `.agents/CONVENTIONS.md` pour prendre connaissance de la stack technique, des patterns autorisés et des skills/références associés au projet.
    * Consulter `docs/agents/domain.md` (ou le fichier `CONTEXT.md` racine) pour s'aligner sur le langage omniprésent (*ubiquitous language*) et bannir tout synonyme imprécis.
 
 2. **Phase d'Implémentation de Tâche / Ticket :**
    * Identifier et charger le ticket actif (situé dans `.scratch/**/issues/` ou le gestionnaire configuré dans `docs/agents/issue-tracker.md`).
    * **Contract Reader Protocol :** Charger obligatoirement en contexte **tous** les fichiers explicitement déclarés dans la section `## Inputs` du ticket.
-   * Consulter `.agents/COMMANDS.md` pour connaître les commandes exactes de test, de lint et de build du projet.
+   * Consulter `.agents/CONVENTIONS.md` (stack technique, standards de code, architecture) et `.agents/COMMANDS.md` (commandes exactes de test, lint et build).
+   * **Routage conditionnel par stack :** Si `.agents/CONVENTIONS.md` déclare des skills ou références associés à la stack dans sa table dédiée, charger et appliquer ceux qui correspondent au périmètre de la tâche avant d'implémenter ou de reviewer.
    * Vérifier s'il existe un fichier `CONTEXT.md` local dans le répertoire du code concerné (ex. `src/<module>/CONTEXT.md`) et internaliser ses contraintes.
 
 3. **Phase de Diagnostic / Erreur Inattendue :**

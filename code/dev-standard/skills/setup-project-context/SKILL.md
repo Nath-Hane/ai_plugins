@@ -66,6 +66,7 @@ Déployer les fichiers de référence à partir des templates situés dans `./re
      * Si `Cargo.toml` existe : suggérer `cargo test`, `cargo clippy`.
 2. `.agents/LEARNINGS.md` : Initialiser à partir de `[template-learnings.md](./resources/template-learnings.md)`.
 3. `.agents/CONVENTIONS.md` : Initialiser à partir de `[template-conventions.md](./resources/template-conventions.md)`.
+   * Inviter l'utilisateur à renseigner la section **Stack Technique & Outillage** (langage, framework, BDD, outils) ainsi que les éventuels **skills ou références** associés à cette stack.
 4. `.agents/docs/INDEX.md` : Initialiser à partir de `[template-index-docs.md](./resources/template-index-docs.md)`.
 5. `docs/adr/INDEX.md` : Initialiser à partir de `[template-index-adr.md](./resources/template-index-adr.md)`.
 6. `.agents/template-ticket.md` : Copier `[template-ticket.md](./resources/template-ticket.md)` comme référence locale pour la création de tickets ICM.
@@ -77,6 +78,7 @@ Déployer les fichiers de référence à partir des templates situés dans `./re
 Afficher un compte-rendu clair à l'utilisateur :
 * Liste des dossiers et fichiers créés ou vérifiés.
 * Statut de l'installation des skills de Matt Pocock.
+* Rappel de compléter/vérifier `.agents/CONVENTIONS.md` (stack technique + skills associés) et `.agents/COMMANDS.md` si des placeholders subsistent.
 * Rappel des commandes prêtes à l'emploi :
   * `/grill-with-docs` pour cadrer une nouvelle fonctionnalité et générer des ADRs.
   * `/setup-matt-pocock-skills` pour choisir son tracker (`docs/agents/issue-tracker.md`).
